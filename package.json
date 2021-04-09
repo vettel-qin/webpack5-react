@@ -64,8 +64,8 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "npm run eslint",
+    "*.{js,jsx,ts,tsx}": [
+      "yarn lint",
       "prettier prettier.config.js --write",
       "git add"
     ]
