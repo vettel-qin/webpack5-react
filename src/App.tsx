@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react';
 @inject('store')
 @observer
 class App extends Component {
-  props: any;
+  props;
 
   render() {
     return (

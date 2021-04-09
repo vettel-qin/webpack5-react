@@ -694,99 +694,107 @@ module.exports = {
   endOfLine: 'lf'
 };
 ```
-stylelint
+
+## stylelint
 
 安装依赖
+```
+yarn add stylelint stylelint-config-standard stylelint-config-prettier -D
+```
 
-$ npm install stylelint stylelint-config-standard stylelint-config-prettier --save-dev
-stylelint.config.js
+## stylelint.config.js
 
 在根目录下，新增 stylelint.config.js 文件：
+```
 module.exports = {
-    extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
-    ignoreFiles: [
-        '**/*.ts',
-        '**/*.tsx',
-        '**/*.png',
-        '**/*.jpg',
-        '**/*.jpeg',
-        '**/*.gif',
-        '**/*.mp3',
-        '**/*.json'
+  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+  ignoreFiles: [
+    '**/*.ts',
+    '**/*.tsx',
+    '**/*.png',
+    '**/*.jpg',
+    '**/*.jpeg',
+    '**/*.gif',
+    '**/*.mp3',
+    '**/*.json'
+  ],
+  rules: {
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['extends', 'ignores']
+      }
     ],
-    rules: {
-        'at-rule-no-unknown': [
-            true,
-            {
-                ignoreAtRules: ['extends', 'ignores']
-            }
-        ],
-        indentation: 4,
-        'number-leading-zero': null,
-        'unit-allowed-list': ['em', 'rem', 's', 'px', 'deg', 'all', 'vh', '%'],
-        'no-eol-whitespace': [
-            true,
-            {
-                ignore: 'empty-lines'
-            }
-        ],
-        'declaration-block-trailing-semicolon': 'always',
-        'selector-pseudo-class-no-unknown': [
-            true,
-            {
-                ignorePseudoClasses: ['global']
-            }
-        ],
-        'block-closing-brace-newline-after': 'always',
-        'declaration-block-semicolon-newline-after': 'always',
-        'no-descending-specificity': null,
-        'selector-list-comma-newline-after': 'always',
-        'selector-pseudo-element-colon-notation': 'single'
-    }
+    indentation: 4,
+    'number-leading-zero': null,
+    'unit-allowed-list': ['em', 'rem', 's', 'px', 'deg', 'all', 'vh', '%'],
+    'no-eol-whitespace': [
+      true,
+      {
+        ignore: 'empty-lines'
+      }
+    ],
+    'declaration-block-trailing-semicolon': 'always',
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global']
+      }
+    ],
+    'block-closing-brace-newline-after': 'always',
+    'declaration-block-semicolon-newline-after': 'always',
+    'no-descending-specificity': null,
+    'selector-list-comma-newline-after': 'always',
+    'selector-pseudo-element-colon-notation': 'single'
+  }
 };
+```
 
-lint-staged、pre-commit
+## lint-staged、pre-commit
 
 安装依赖
-
-$ npm install lint-staged prettier eslint pre-commit --save-dev
-package.json
-
+```
+yarn add lint-staged prettier eslint pre-commit -D
+```
+## package.json
+```
 {
-    // ...
-    "scripts": {
-        "lint:tsx": "eslint --ext .tsx src && eslint --ext .ts src",
-        "lint:css": "stylelint --aei .less .css src",
-        "precommit": "lint-staged",
-        "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
-    },
-    "pre-commit": [
-        "precommit",
-        "precommit-msg"
+  // ...
+  "scripts": {
+    "lint": "eslint --fix --ext .js --ext .jsx --ext .ts --ext .tsx src",
+    "lint:css": "stylelint --aei .less .css src",
+    "precommit": "lint-staged",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
+  },
+  "pre-commit": [
+    "precommit",
+    "precommit-msg"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
     ],
-    "lint-staged": {
-        "*.{js,jsx,ts,tsx}": [
-            "eslint --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "*.{css,less}": [
-            "stylelint --fix",
-            "prettier --write",
-            "git add"
-        ]
-    }
+    "*.{css,less}": [
+      "stylelint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
-
-eslint-webpack-plugin
+```
+## eslint-webpack-plugin
 
 安装依赖
-
-$ npm install eslint-webpack-plugin --save-dev
-script/webpack.config.js
-
+```
+yarn add eslint-webpack-plugin -D
+```
+## scripts/webpack.config.js
+```
 const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
-    // ...
-    plugins: [new ESLintPlugin()],
+  // ...
+  plugins: [new ESLintPlugin()],
 };
+```
