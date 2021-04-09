@@ -89,7 +89,7 @@ module.exports = {
         children: true
       }
     ],
-    'react/jsx-indent': ['error', 4],
+    'react/jsx-indent': ['error', 2],
     'react/jsx-key': 2,
     'react/jsx-no-bind': 0,
     'react/jsx-no-duplicate-props': 2,

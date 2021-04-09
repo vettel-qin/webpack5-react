@@ -2,7 +2,7 @@ import { observable, action, makeObservable } from 'mobx';
 
 class Store {
   constructor() {
-    makeObservable(this)
+    makeObservable(this);
   }
 
   @observable
@@ -10,12 +10,12 @@ class Store {
 
   @action('add')
   add = () => {
-    this.count = this.count + 1
+    this.count = this.count + 1;
   }
 
   @action('reduce')
   reduce = () => {
-    this.count = this.count - 1
+    this.count = this.count - 1;
   }
 }
 

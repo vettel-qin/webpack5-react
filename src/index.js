@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Router, Route, Link } from "react-router";
-import { createBrowserHistory } from "history";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route } from 'react-router';
+import { createBrowserHistory } from 'history';
 import { Provider } from 'mobx-react';
 
-import App from "./App.tsx";
-import About from './About.tsx';
-import Store from './store.js';
+import App from './App';
+import About from './About';
+import Store from './store';
 
 ReactDOM.render(
   <Provider store={Store}>
@@ -15,5 +15,5 @@ ReactDOM.render(
       <Route exact path="/about" component={About} />
     </Router>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
