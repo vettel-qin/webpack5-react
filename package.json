@@ -9,6 +9,7 @@
     "start": "cross-env NODE_ENV=development webpack serve  --mode=development --config scripts/webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --mode=production --config scripts/webpack.config.js",
     "lint": "eslint --fix --ext .js --ext .jsx --ext .ts --ext .tsx src/",
+    "precommit": "lint-staged",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
   "devDependencies": {
@@ -59,15 +60,20 @@
     "react-dom": "^17.0.2",
     "react-router": "^5.2.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  "pre-commit": [
+    "precommit",
+    "precommit-msg"
+  ],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier prettier.config.js --write",
-      "git add"
+        "eslint --fix",
+        "prettier --write",
+        "git add"
+    ],
+    "*.{css,less}": [
+        "stylelint --fix",
+        "prettier --write",
+        "git add"
     ]
   }
 }
