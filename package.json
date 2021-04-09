@@ -66,7 +66,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run eslint",
-      "prettier .prettierrc.js --write",
+      "prettier prettier.config.js --write",
       "git add"
     ]
   }
