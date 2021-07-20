@@ -6,15 +6,13 @@ import { Provider } from 'mobx-react';
 
 import App from './App';
 import About from './About';
-import List from './List';
 import Store from './store';
 
 ReactDOM.render(
   <Provider store={Store}>
     <Router history={createBrowserHistory()}>
-      <Route path="/" exact component={App} />
-      <Route path="/about" exact component={About} />
-      <Route path="/list" exact component={List} />
+      <Route exact path="/" component={App} />
+      <Route exact path="/about" component={About} />
     </Router>
   </Provider>,
   document.getElementById('root')
