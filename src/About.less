@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 12px;
+
+  > .column-container {
+    flex: 1 1 0;
+    margin: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+
+    > li {
+      border: 1px solid #eee;
+      padding: 5px;
+      margin: 0 0 10px;
+      flex: 1;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
